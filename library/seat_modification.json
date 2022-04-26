@@ -1,0 +1,72 @@
+{
+    "fixed": [
+        
+    ],
+    "mate": [
+        {
+            "name_1": "廖从云",
+            "name_2": "边麓元",
+            "pref": "FRONT CLOSE"
+        },
+        {
+            "name_1": "袁伟伦",
+            "name_2": "章淏博"
+        },
+        {
+            "name_1": "骆子墨",
+            "name_2": "赖思轩",
+            "pref": "BACK CLOSE"
+        }
+    ],
+    "pref": [
+        {
+            "name": "张宸瑞",
+            "pref": "FRONT MIDDLE_COL CLOSE"
+        },
+        {
+            "name": "郑俊永",
+            "pref": "MIDDLE_COL VERY_CLOSE"
+        },
+        {
+            "name": "陈李石农",
+            "pref": "FRONT CLOSE"
+        },
+        {
+            "name": "李星宸",
+            "pref": {
+                "row_lower": 0,
+                "row_upper": 3,
+                "col_lower": 3,
+                "col_upper": 11
+            }
+        },
+        {
+            "name": "龚搏扬",
+            "pref": "FRONT MIDDLE_COL VERY_CLOSE"
+        },
+        {
+            "name": "张扬",
+            "pref": "BACK VERY_CLOSE"
+        },
+        {
+            "name": "曾韦翔",
+            "pref": [
+                [
+                    1,
+                    3
+                ],
+                [
+                    5,
+                    11
+                ]
+            ]
+        }
+    ],
+    "override": [
+        {
+            "name": "易诗兰",
+            "row": 0,
+            "col": 0
+        }
+    ]
+}
