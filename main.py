@@ -25,7 +25,7 @@ def get_c5_excel_form(seats):
 
             student = seats.seats[row_seat][col_seat]
             
-            if student == 'NA' or 'EMPTY':
+            if student in ('NA', 'EMPTY'):
                 continue
 
             sheet[coord_form] = student
