@@ -8,56 +8,53 @@ Options on the seat generator are achieved by `.json` configuration files. There
 
 ```json
 {
-    "forbidden": [
-        [
-            0,
-            0
-        ],
-        [
-            0,
-            2
-        ],
-        [
-            0,
-            5
-        ],
-        [
-            0,
-            8
-        ],
-        [
-            1,
-            2
-        ],
-        [
-            1,
-            5
-        ],
-        [
-            1,
-            8
-        ],
-        [
-            2,
-            2
-        ],
-        [
-            2,
-            5
-        ],
-        [
-            2,
-            8
-        ],
-        [
-            3,
-            2
-        ],
-        [
-            3,
-            8
-        ]
-    ],
+    "forbidden": {
+        "mode": "generator",
+        "config": {
+            "rules":
+            [
+                {
+                    "mode": "add",
+                    "content": [
+                        [
+                            0,
+                            0
+                        ]
+                    ]
+                },
+                {
+                    "mode": "iter",
+                    "content": {
+                        "row": {
+                            "mode": "range",
+                            "content": {
+                                "lower_bound": 0,
+                                "upper_bound": 4,
+                                "step": 1
+                            }
+                        },
+                        "col": {
+                            "mode": "given",
+                            "content": [
+                                2,
+                                5,
+                                8
+                            ]
+                        }
+                    }
+                },
+                {
+                    "mode": "remove",
+                    "content": [
+                        [
+                            3,
+                            5
+                        ]
+                    ]
+                }
+            ]
+        }
+    },
     "row": 4,
     "col": 11,
     "name_list": [
