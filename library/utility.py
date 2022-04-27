@@ -1,7 +1,14 @@
+'''
+
+This module contains some utility packs for various uses.
+
+'''
+
+
 import json
 import time
 
-# Contains function for utility.
+# Replace a certain word in a string with a specific word.
 def replace_str_word(string, word, replace):
     for i in range(len(string) - len(word) + 1):
         if string[i: i + len(word)] == word:
@@ -32,9 +39,12 @@ def get_json_data(path):
 
 # Special seating according to weeks passed.
 def get_pair_by_week(name_list):
+    # Convert the timestamp into week numbers.
     week_coord = time.time() // (86400 * 7)
+    # Get an index tag.
     get_index = int(week_coord % len(name_list))
     
+    # Prepares to return.
     if get_index < len(name_list) - 1:
         return tuple(name_list[get_index: get_index + 2])
     else:

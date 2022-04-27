@@ -162,11 +162,33 @@ class Seats:
         # Return the positions of the pair, disregarding the boolean value.
         return pair_pos[1:]
 
+    def eval_legal_bound(self, row_bound, col_bound, mode='single'):
+        if mode == 'single':
+            for row in range(row_bound[0], row_bound[1]):
+                for col in range(col_bound[0], col_bound[1]):
+                    if not(self.seats[row][col] in self.forbidden) and self.seats[row][col].can_swap:
+                        return
+
+        elif mode == 'pair':
+            for row in range(row_bound[0], row_bound[1]):
+                for col in range(col_bound[0], col_bound[1] - 1):
+                    if not(self.seats[row][col] in self.forbidden) and self.seats[row][col].can_swap \
+                    and not(self.seats[row][col + 1] in self.forbidden) and self.seats[row][col + 1].can_swap:
+                        return
+        
+        else:
+            raise ValueError('Illegal mode.')
+
+        raise MemoryError('Current run has no solution. Please try again or change the seat modification config.')
+
     # Returns a random swappable position.
     def get_random_swappable_pos(self, row_bound, col_bound):
         new_row = random.randint(row_bound[0], row_bound[1] - 1)
         new_col = random.randint(col_bound[0], col_bound[1] - 1)
         pos = (new_row, new_col)
+
+        # Check if there will be any seat available to be chosen.
+        self.eval_legal_bound(row_bound, col_bound, 'single')
         
         # Requires the position both not in forbidden list and is swappable.
         while not(not(pos in self.forbidden) and self.seats[pos[0]][pos[1]].can_swap):
@@ -183,6 +205,8 @@ class Seats:
         pair_pos_0 = pair_pos[0]
         pair_pos_1 = pair_pos[1]
 
+        # Check if there will be any seat available to be chosen.
+        self.eval_legal_bound(row_bound, col_bound, 'pair')
 
         # Again implement while command to get a pair in which both members are swappable (can_swap is True).
         while not(not(pair_pos_0 in self.forbidden) and not(pair_pos_1 in self.forbidden) and self.seats[pair_pos_0[0]][pair_pos_0[1]].can_swap \
@@ -378,6 +402,7 @@ class Seats:
 
         return layers
 
+    # Generate a .txt file.
     def get_written_file(self, result_name, enable_ysl=True):
         get_string = self.generate_string(enable_ysl)
         with open(f'{result_name}.txt', 'w', encoding='utf-8') as seat:
