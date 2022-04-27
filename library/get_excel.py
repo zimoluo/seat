@@ -39,8 +39,8 @@ def find_special_pos(sheet):
 
     return start
 
-# Need to provide a 
-def get_form(seats):
+# Get me a form.
+def get_form(seats, file_name):
     # Formatted date.
     date = [time.strftime('%d', time.localtime()).strip(), time.strftime('%b', time.localtime()).strip(), time.strftime('%Y', time.localtime()).strip()]
 
@@ -74,4 +74,4 @@ def get_form(seats):
     sheet.cell(row=start['date'][0], column=start['date'][1]).value = dateline
 
     # Save the document.
-    wb.save('ICC S1C5 Seat.xlsx')
+    wb.save(f'{file_name}.xlsx')
