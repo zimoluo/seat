@@ -172,4 +172,4 @@ The `special_seating` config allows a set of names to be arranged in a pair of t
 
 That's it! All you have to do is to set up your own preference in three config files. Then, click the `main.py` file to generate a seat pattern.
 
-This generator also has an experimental function, which is to generate an excel version of the seat pattern. Currently, it relies on a fixed template, which is designed only for C5.
+This generator also supplies excel form generation. What you only need to do is to make a `seat_template.xlsx` with `%ROW`, `%COL`, and `DAY MONTH, YEAR`.
