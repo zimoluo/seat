@@ -1,24 +1,11 @@
-import library.gen as gen
-import sys
-import os
-import library.get_excel as excel
-import library.utility as util
+from library.gui import GUI
+import tkinter as tk
 
-# Restart the entire program. Used to prevent dead loop.
-def restart_program():
-    print('Restarting')
-    python = sys.executable
-    os.execl(python, python, * sys.argv)
+def test():
+    seat = tk.Tk()
+    gui = GUI(seat)
 
-# Main function.
-def main(times=1):
-    file_name = util.get_json_data('./library/seat_initialization.json')['file_name']
-    for _ in range(times):
-        excel.get_form(gen.gen(file_name), file_name)
+    seat.mainloop()
 
-# Run the main function with the exception of errors.
 if __name__ == '__main__':
-    try:
-        main()
-    except MemoryError:
-        restart_program()
+    test()

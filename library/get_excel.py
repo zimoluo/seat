@@ -14,6 +14,7 @@ import library.utility as util
 
 def find_special_pos(sheet):
     start = {}
+    score = 0
 
     for row in sheet.rows:
         for cell in row:
@@ -23,9 +24,11 @@ def find_special_pos(sheet):
             if '$' in cell.value:
                 if r'%ROW%' in cell.value:
                     start['row'] = cell.row
+                    score += 1
 
                 if r'%COL%' in cell.value:
                     start['col'] = cell.column
+                    score += 1
 
                 cell.value = None
 
@@ -34,7 +37,7 @@ def find_special_pos(sheet):
                 
 
     
-    if len(start) != 3:
+    if score != 2:
         raise ValueError('Template inappropriate.')
 
     return start
@@ -65,13 +68,15 @@ def get_form(seats, file_name):
             sheet.cell(row=row_form, column=col_form).value = student
     
     # Fill the dateline with date.
-    dateline = sheet.cell(row=start['date'][0], column=start['date'][1]).value
+    try:
+        dateline = sheet.cell(row=start['date'][0], column=start['date'][1]).value
 
-    dateline = util.replace_str_word(dateline, 'DAY', date[0])
-    dateline = util.replace_str_word(dateline, 'MONTH', date[1])
-    dateline = util.replace_str_word(dateline, 'YEAR', date[2])
-    
-    sheet.cell(row=start['date'][0], column=start['date'][1]).value = dateline
+        dateline = util.replace_str_word(dateline, 'DAY', date[0])
+        dateline = util.replace_str_word(dateline, 'MONTH', date[1])
+        dateline = util.replace_str_word(dateline, 'YEAR', date[2])
+        sheet.cell(row=start['date'][0], column=start['date'][1]).value = dateline
+    except KeyError:
+        pass
 
     # Save the document.
     wb.save(f'{file_name}.xlsx')

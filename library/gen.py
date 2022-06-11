@@ -149,7 +149,7 @@ def gen(written_file_name):
     override = set_modif_return_override(seats)
 
     # Print the string.
-    print(seats.generate_string(override))
+    print(seats.generate_string(override) + '\n')
     seats.get_written_file(written_file_name, override)
 
     return seats

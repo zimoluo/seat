@@ -37,6 +37,12 @@ def get_json_data(path):
     
     return data
 
+# Simply return a file's information.
+def get_file_info(path):
+        with open(path, encoding='utf-8') as file:
+            info = file.read()
+        return info
+
 # Special seating according to weeks passed.
 def get_pair_by_week(name_list):
     # Convert the timestamp into week numbers.
