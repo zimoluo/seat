@@ -1,0 +1,197 @@
+{
+    "noSit": {
+        "mode": "empty"
+    },
+    "row": 11,
+    "col": 11,
+    "seed": 0,
+    "nameList": [
+        "龚搏扬",
+        "骆子墨",
+        "章淏博",
+        "边麓元",
+        "廖从云",
+        "林彦含",
+        "李星宸",
+        "曾韦翔",
+        "蔡朋骏",
+        "吴周毅",
+        "白宇轩",
+        "王昊天",
+        "赖思轩",
+        "郑俊永",
+        "杨熙宇",
+        "张宸瑞",
+        "詹悦",
+        "黄婧涵",
+        "陈元畅",
+        "程启航",
+        "丁鹏元",
+        "迟涵予",
+        "张扬",
+        "龙飞宇",
+        "邱晨朔",
+        "杜心扬",
+        "范青桐",
+        "卢逸",
+        "陈李石农",
+        "石清泓"
+    ],
+    "modif": [
+        {
+            "name": "廖从云",
+            "mode": "mate",
+            "mate": "边麓元"
+        },
+        {
+            "name": "骆子墨",
+            "mate": "赖思轩",
+            "mode": "mate",
+            "pref": {
+                "mode": "simple",
+                "row": {
+                    "mode": "scale",
+                    "value": [
+                        0.7,
+                        1
+                    ]
+                },
+                "col": {
+                    "mode": "any"
+                }
+            }
+        },
+        {
+            "name": "范青桐",
+            "mate": "邱晨朔",
+            "mode": "mate"
+        },
+        {
+            "name": "张宸瑞",
+            "pref": {
+                "mode": "simple",
+                "row": {
+                    "mode": "scale",
+                    "value": [
+                        0,
+                        0.3
+                    ]
+                },
+                "col": {
+                    "mode": "any"
+                }
+            },
+            "mode": "pref"
+        },
+        {
+            "name": "张扬",
+            "pref": {
+                "mode": "simple",
+                "row": {
+                    "mode": "scale",
+                    "value": [
+                        0.7,
+                        1
+                    ]
+                },
+                "col": {
+                    "mode": "any"
+                }
+            },
+            "mode": "pref"
+        },
+        {
+            "names": [
+                "蔡朋骏",
+                "迟涵予",
+                "白宇轩"
+            ],
+            "mode": "rotate"
+        },
+        {
+            "names": [
+                "詹悦",
+                "黄婧涵",
+                "林彦含"
+            ],
+            "mode": "rotate"
+        },
+        {
+            "name": "李星宸",
+            "pref": {
+                "mode": "simple",
+                "row": {
+                    "mode": "range",
+                    "value": [
+                        0,
+                        3
+                    ]
+                },
+                "col": {
+                    "mode": "range",
+                    "value": [
+                        3,
+                        11
+                    ]
+                }
+            },
+            "mode": "pref"
+        },
+        {
+            "name": "龚搏扬",
+            "pref": {
+                "mode": "simple",
+                "row": {
+                    "mode": "range",
+                    "value": [
+                        0,
+                        1
+                    ]
+                },
+                "col": {
+                    "mode": "any"
+                }
+            },
+            "mode": "pref"
+        },
+        {
+            "name": "曾韦翔",
+            "pref": {
+                "mode": "simple",
+                "row": {
+                    "mode": "range",
+                    "value": [
+                        1,
+                        3
+                    ]
+                },
+                "col": {
+                    "mode": "range",
+                    "value": [
+                        5,
+                        11
+                    ]
+                }
+            },
+            "mode": "pref"
+        },
+        {
+            "name": "章淏博",
+            "mode": "mate",
+            "mate": "杜心扬",
+            "pref": {
+                "row": {
+                    "mode": "scale",
+                    "value": [
+                        0.99,
+                        1
+                    ]
+                },
+                "col": {
+                    "mode": "any"
+                },
+                "mode": "simple"
+            }
+        }
+    ]
+}
