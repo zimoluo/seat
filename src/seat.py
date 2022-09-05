@@ -46,6 +46,7 @@ class SingleSeat:
     def sit(self, name: str) -> None:
         if type(name) is str:
             self._sitter = name
+            return
         raise ValueError('Invalid name.')
     
     def swap(self, other) -> None:
@@ -198,8 +199,8 @@ class Seats:
             lines = lines + line + ('\n' if row != len(self._seat) - 1 else '')
         return lines
     
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self._seat)
     
-    def __getitem__(self, key):
+    def __getitem__(self, key: Union[int, tuple]) -> Union[np.array, SingleSeat]:
         return self._seat[key]
