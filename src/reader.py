@@ -1,4 +1,3 @@
-import json
 from src.constants import *
 from src.seat import NoSolutionError, Seats
 from typing import Union
