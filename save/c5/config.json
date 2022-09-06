@@ -143,41 +143,16 @@
             "mode": "mate",
             "name": "章淏博",
             "pref": {
-                "choice": [
-                    {
-                        "col": {
-                            "mode": "range",
-                            "value": [
-                                0,
-                                5
-                            ]
-                        },
-                        "row": {
-                            "mode": "scale",
-                            "value": [
-                                0.99,
-                                1
-                            ]
-                        }
-                    },
-                    {
-                        "col": {
-                            "mode": "range",
-                            "value": [
-                                6,
-                                11
-                            ]
-                        },
-                        "row": {
-                            "mode": "scale",
-                            "value": [
-                                0.99,
-                                1
-                            ]
-                        }
-                    }
-                ],
-                "mode": "select"
+                "col": {
+                    "mode": "any"
+                },
+                "row": {
+                    "mode": "scale",
+                    "value": [
+                        0.99,
+                        1
+                    ]
+                }
             }
         }
     ],

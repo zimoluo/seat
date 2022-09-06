@@ -3,6 +3,7 @@ import numpy as np
 from src.constants import *
 from typing import Union
 
+class NoSolutionError(Exception): ...
 
 class Util:
     def __init__(self): ...
@@ -139,7 +140,7 @@ class Seats:
                     if self._seat[row, col].canSwap:
                         cand.append((row, col))
         if not cand:
-            raise IndexError('No solution.')
+            raise NoSolutionError('No solution.')
         
         return random.choice(cand)
 

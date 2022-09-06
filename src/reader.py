@@ -1,6 +1,6 @@
 import json
 from src.constants import *
-from src.seat import Seats
+from src.seat import NoSolutionError, Seats
 from typing import Union
 import time
 import random
@@ -108,7 +108,7 @@ class Config:
         for _ in range(MAX_TRIAL):
             try:
                 self._getSeatObject()
-            except IndexError:
+            except NoSolutionError:
                 random.seed(self._seed)
                 self._seed = random.random()
             else:
