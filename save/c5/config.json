@@ -7,6 +7,11 @@
             "name": "廖从云"
         },
         {
+            "mode": "mate",
+            "name": "王昊天",
+            "mate": "丁鹏元"
+        },
+        {
             "mate": "赖思轩",
             "mode": "mate",
             "name": "骆子墨",
@@ -217,5 +222,5 @@
         "mode": "rules"
     },
     "row": 4,
-    "seed": 0
+    "seed": 918
 }
