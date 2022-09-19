@@ -1,7 +1,7 @@
 # seat
 A seat generator that allows various modifications.
 
-## How to use
+## Manual
 This seat generator allows random generation of seats from a set of names with various modifications, including but not limited to random assortment, fixed seat, preferred seating areas, seat mate with or without preference, and rotate options.
 
 All presets for generating a seat pattern is controlled by a `config.json` file. Below is an example of `config.json`. Such a file contains six entries of settings. The tabs `row` and `col` determine the size of the rectangular room. `noSit` stands for the positions that are not available for sitting, such as aisles between seats. `nameList` stands for names to be randomly assigned into seats. `seed` represents the seed for generation; a same seed with the same configuration always produces the same result. `modif` is a list of modifications done to the seat pattern.
