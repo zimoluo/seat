@@ -2,6 +2,7 @@ EMPTY = 'empty'
 
 ADD = 'add'
 DEL = 'del'
+INVERT = 'invert'
 MODE = 'mode'
 ROW = 'row'
 COL = 'col'
@@ -15,13 +16,13 @@ CHOICE = 'choice'
 
 RANGE = 'range'
 SCALE = 'scale'
-ANY = 'any'
+ALL = 'all'
 VALUE = 'value'
+DIRECT = 'direct'
 
 MATE = 'mate'
 PREF = 'pref'
 NAMES = 'names'
-SHUFFLED = 'shuffled'
 
 NOSIT = 'noSit'
 SEED = 'seed'

@@ -3,69 +3,84 @@
     "modif": [
         {
             "mate": "边麓元",
-            "mode": "mate",
+            "mode": "pref",
             "name": "廖从云"
         },
         {
-            "mode": "mate",
+            "mode": "pref",
             "name": "王昊天",
             "mate": "丁鹏元"
         },
         {
             "mate": "赖思轩",
-            "mode": "mate",
+            "mode": "pref",
             "name": "骆子墨",
             "pref": {
-                "col": {
-                    "mode": "any"
-                },
-                "mode": "simple",
-                "row": {
-                    "mode": "scale",
-                    "value": [
-                        0.7,
-                        1
-                    ]
-                }
+                "mode": "rules",
+                "rules": [
+                    {
+                        "col": {
+                            "mode": "all"
+                        },
+                        "mode": "add",
+                        "row": {
+                            "mode": "scale",
+                            "value": [
+                                0.7,
+                                1
+                            ]
+                        }
+                    }
+                ]
             }
         },
         {
             "mate": "邱晨朔",
-            "mode": "mate",
+            "mode": "pref",
             "name": "范青桐"
         },
         {
             "mode": "pref",
             "name": "张宸瑞",
             "pref": {
-                "col": {
-                    "mode": "any"
-                },
-                "mode": "simple",
-                "row": {
-                    "mode": "scale",
-                    "value": [
-                        0,
-                        0.3
-                    ]
-                }
+                "mode": "rules",
+                "rules": [
+                    {
+                        "col": {
+                            "mode": "all"
+                        },
+                        "mode": "add",
+                        "row": {
+                            "mode": "scale",
+                            "value": [
+                                0,
+                                0.3
+                            ]
+                        }
+                    }
+                ]
             }
         },
         {
             "mode": "pref",
             "name": "张扬",
             "pref": {
-                "col": {
-                    "mode": "any"
-                },
-                "mode": "simple",
-                "row": {
-                    "mode": "scale",
-                    "value": [
-                        0.7,
-                        1
-                    ]
-                }
+                "mode": "rules",
+                "rules": [
+                    {
+                        "col": {
+                            "mode": "all"
+                        },
+                        "mode": "add",
+                        "row": {
+                            "mode": "scale",
+                            "value": [
+                                0.7,
+                                1
+                            ]
+                        }
+                    }
+                ]
             }
         },
         {
@@ -88,77 +103,97 @@
             "mode": "pref",
             "name": "李星宸",
             "pref": {
-                "col": {
-                    "mode": "range",
-                    "value": [
-                        3,
-                        11
-                    ]
-                },
-                "mode": "simple",
-                "row": {
-                    "mode": "range",
-                    "value": [
-                        0,
-                        3
-                    ]
-                }
+                "mode": "rules",
+                "rules": [
+                    {
+                        "col": {
+                            "mode": "range",
+                            "value": [
+                                3,
+                                11
+                            ]
+                        },
+                        "mode": "add",
+                        "row": {
+                            "mode": "range",
+                            "value": [
+                                0,
+                                3
+                            ]
+                        }
+                    }
+                ]
             }
         },
         {
             "mode": "pref",
             "name": "龚搏扬",
             "pref": {
-                "col": {
-                    "mode": "any"
-                },
-                "mode": "simple",
-                "row": {
-                    "mode": "range",
-                    "value": [
-                        0,
-                        1
-                    ]
-                }
+                "mode": "rules",
+                "rules": [
+                    {
+                        "col": {
+                            "mode": "all"
+                        },
+                        "mode": "add",
+                        "row": {
+                            "mode": "range",
+                            "value": [
+                                0,
+                                1
+                            ]
+                        }
+                    }
+                ]
             }
         },
         {
             "mode": "pref",
             "name": "曾韦翔",
             "pref": {
-                "col": {
-                    "mode": "range",
-                    "value": [
-                        5,
-                        11
-                    ]
-                },
-                "mode": "simple",
-                "row": {
-                    "mode": "range",
-                    "value": [
-                        1,
-                        3
-                    ]
-                }
+                "mode": "rules",
+                "rules": [
+                    {
+                        "col": {
+                            "mode": "range",
+                            "value": [
+                                5,
+                                11
+                            ]
+                        },
+                        "mode": "add",
+                        "row": {
+                            "mode": "range",
+                            "value": [
+                                1,
+                                3
+                            ]
+                        }
+                    }
+                ]
             }
         },
         {
             "mate": "杜心扬",
-            "mode": "mate",
+            "mode": "pref",
             "name": "章淏博",
             "pref": {
-                "col": {
-                    "mode": "any"
-                },
-                "row": {
-                    "mode": "scale",
-                    "value": [
-                        0.99,
-                        1
-                    ]
-                },
-                "mode": "simple"
+                "mode": "rules",
+                "rules": [
+                    {
+                        "col": {
+                            "mode": "all"
+                        },
+                        "row": {
+                            "mode": "scale",
+                            "value": [
+                                0.99,
+                                1
+                            ]
+                        },
+                        "mode": "add"
+                    }
+                ]
             }
         }
     ],
@@ -195,32 +230,43 @@
         "石清泓"
     ],
     "noSit": {
-        "config": {
-            "rules": [
-                {
-                    "col": 0,
-                    "mode": "add",
-                    "row": [
+        "rules": [
+            {
+                "col": {
+                    "mode": "direct",
+                    "value": 0
+                },
+                "mode": "add",
+                "row": {
+                    "mode": "range",
+                    "value": [
                         0,
                         2
                     ]
-                },
-                {
-                    "col": [
+                }
+            },
+            {
+                "col": {
+                    "mode": "direct",
+                    "value": [
                         2,
-                        9,
-                        3
-                    ],
-                    "mode": "add",
-                    "row": [
+                        5,
+                        8
+                    ]
+                },
+                "mode": "add",
+                "row": {
+                    "mode": "range",
+                    "value": [
                         0,
-                        4
+                        4,
+                        1
                     ]
                 }
-            ]
-        },
+            }
+        ],
         "mode": "rules"
     },
     "row": 4,
-    "seed": 918
+    "seed": 0
 }

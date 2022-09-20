@@ -113,40 +113,38 @@ class Seats:
         
         return False
     
-    def _hasPairSwappable(self, *pos: tuple) -> bool:
+    def _hasPairSwappable(self, pos: tuple) -> bool:
         row, col = pos
         if not self._hasPair(row, col):
             return False
         return self._seat[row, col].canSwap and self._seat[row, col + 1].canSwap
 
-    def _getRandomSwap(self, rowB: tuple, colB: tuple, pair: bool=False) -> tuple:
-        for _ in range((len(range(*rowB)) - 1) * (len(range(*colB)) - 1)):
-            row = random.randint(rowB[0], rowB[1] - 1)
-            col = random.randint(colB[0], colB[1] - 1)
+    def _getRandomSwap(self, pref: Union[tuple[tuple], list[tuple]], pair: bool=False) -> tuple:
+        for _ in range(len(pref)):
+            pos = random.choice(pref)
             if pair:
-                if self._hasPairSwappable(row, col):
-                    return (row, col), (row, col + 1)
+                if self._hasPairSwappable(pos):
+                    return pos, (pos[0], pos[1] + 1)
             else:
-                if self._seat[row, col].canSwap:
-                    return row, col
+                if self._seat[pos].canSwap:
+                    return pos
 
         cand = []
-        for row in range(*rowB):
-            for col in range(*colB):
-                if pair:
-                    if self._hasPairSwappable(row, col):
-                        cand.append(((row, col), (row, col + 1)))
-                else:
-                    if self._seat[row, col].canSwap:
-                        cand.append((row, col))
+        for eachPos in pref:
+            if pair:
+                if self._hasPairSwappable(eachPos):
+                    cand.append((eachPos, (eachPos[0], eachPos[1] + 1)))
+            else:
+                if self._seat[eachPos].canSwap:
+                    cand.append(eachPos)
         if not cand:
             raise NoSolutionError('No solution.')
         
         return random.choice(cand)
 
-    def setPref(self, name: str, rowB: tuple, colB: tuple) -> None:
+    def setPref(self, name: str, pref: Union[tuple[tuple], list[tuple]]) -> None:
         myRow, myCol = self._getNamePos(name)
-        row, col = self._getRandomSwap(rowB, colB)
+        row, col = self._getRandomSwap(pref)
         self._seat[row, col].swap(self._seat[myRow, myCol])
         self._seat[row, col].canSwap = False
     
@@ -157,13 +155,8 @@ class Seats:
         self._seat[pos].swap(self._seat[myPos])
         self._seat[pos].canSwap = False
     
-    def setMate(self, name: str, mate: str, rowB: tuple=None, colB: tuple=None) -> None:
-        if rowB is None:
-            rowB = (0, len(self._seat))
-        if colB is None:
-            colB = (0, len(self._seat[0]))
-        
-        newPair = list(self._getRandomSwap(rowB, colB, pair=True))
+    def setMate(self, name: str, mate: str, pref: Union[tuple[tuple], list[tuple]]) -> None:
+        newPair = list(self._getRandomSwap(pref, pair=True))
         
         myNew = newPair.pop(random.randint(0, 1))
         self._seat[myNew].swap(self._seat[self._getNamePos(name)])

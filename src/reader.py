@@ -8,22 +8,81 @@ import math
 class Parser:
 
     @staticmethod
-    def rules(rules: list[dict]) -> tuple:
+    def posArrayProvider(data: dict, rowMax: int, colMax: int) -> tuple:
+        mode = data[MODE]
+        if mode == RULES:
+            return Parser.rules(data[RULES], rowMax, colMax)
+        elif mode == SIMPLE:
+            out = []
+            for each in data[VALUE]:
+                out.append(tuple(each))
+            return tuple(set(out))
+        elif mode == EMPTY:
+            return tuple()
+        else:
+            raise ValueError('Illegal mode.')
+    
+    allPreset = {MODE: RULES, RULES: [{MODE: ADD, COL: {MODE: ALL}, ROW: {MODE: ALL}}]}
+
+    @staticmethod
+    def rules(rules: list[dict], rowMax: int, colMax: int) -> tuple:
         raw = []
         for rule in rules:
-            ref = {ROW: None, COL: None}
-            for i in (ROW, COL):
-                ref[i] = Parser.interval(rule[i])
-            for row in ref[ROW]:
-                for col in ref[COL]:
-                    if rule[MODE] == ADD:
-                        raw.append((row, col))
-                    elif rule[MODE] == DEL:
-                        while (row, col) in raw:
-                            raw.remove((row, col))
-                    else:
-                        raise ValueError('Illegal mode.')
+            mode = rule[MODE]
+            if mode == INVERT:
+                total = []
+                for rowI in range(rowMax):
+                    for colI in range(colMax):
+                        total.append((rowI, colI))
+                for toDel in raw:
+                    while toDel in total:
+                        total.remove(toDel)
+                raw = total
+                continue
+
+            col = Parser.evalPos(rule[COL], colMax)
+            row = Parser.evalPos(rule[ROW], rowMax)
+            finalPos = []
+            for eachRow in row:
+                for eachCol in col:
+                    finalPos.append((eachRow, eachCol))
+            
+            if mode == ADD:
+                for each in finalPos:
+                    raw.append(each)
+            elif mode == DEL:
+                for each in finalPos:
+                    while each in raw:
+                        raw.remove(each)
+            else:
+                raise ValueError('Illegal mode.')
         return tuple(set(raw))
+    
+    @staticmethod
+    def evalPos(pos: dict, maxVal: int) -> tuple:
+        mode = pos[MODE]
+        if mode == ALL:
+            return tuple(range(maxVal))
+        elif mode == DIRECT:
+            if type(pos[VALUE]) is int:
+                return (pos[VALUE],)
+            elif type(pos[VALUE]) is list:
+                return tuple(pos[VALUE])
+        elif mode == RANGE:
+            return tuple(range(*tuple(pos[VALUE])))
+        elif mode == SCALE:
+            val = tuple(pos[VALUE])
+            if val[0] > val[1]:
+                val = val[1], val[0]
+            if val[0] < 0 or val[1] > 1:
+                raise ValueError('Out of bound!')
+            lower = math.floor(maxVal * val[0]) if val[0] >= 0.5 else math.ceil(maxVal * val[0])
+            upper = math.floor(maxVal * val[1]) if val[1] >= 0.5 else math.ceil(maxVal * val[1])
+            while lower >= upper:
+                upper = lower + 1
+            return tuple(range(lower, upper))
+        else:
+            raise ValueError('Illegal mode.')
     
     @staticmethod
     def rotate(config: dict) -> tuple:
@@ -35,71 +94,12 @@ class Parser:
         else:
             return (config[NAMES][-1], config[NAMES][0])
 
-    @staticmethod
-    def interval(given: Union[int, tuple, list]) -> Union[tuple, range]:
-        if type(given) is int:
-            return (given, )
-        elif type(given) in (list, tuple):
-            if not len(given) in (2, 3):
-                raise ValueError('Illegal interval list.')
-            return range(*tuple(given))
-        else:
-            raise TypeError('Illegal interval type.')
-
-    @staticmethod
-    def pref(pref: dict, rowMax: int, colMax: int) -> tuple:
-        if type(pref) is not dict:
-            raise TypeError('Illegal pref.')
-        
-        mode = pref[MODE]
-        if not mode in (SIMPLE, SELECT):
-            raise ValueError('Illegal mode.')
-        if mode == SELECT:
-            pref = random.choice(pref[CHOICE])
-        rowB, colB = Parser.boundParser(pref[ROW], rowMax), Parser.boundParser(pref[COL], colMax)
-        
-        return rowB, colB
-
-    @staticmethod
-    def boundParser(raw: dict, maxB: int) -> tuple:
-        mode = raw[MODE]
-
-        if mode == ANY:
-            return 0, maxB
-        
-        elif mode == RANGE:
-            value = tuple(raw[VALUE])
-            if value[0] > value[1]:
-                value = value[1], value[0]
-            if value[0] < 0 or value[1] > maxB:
-                raise ValueError('Out of bound!')
-            return value
-        
-        elif mode == SCALE:
-            value = tuple(raw[VALUE])
-            if value[0] > value[1]:
-                value = value[1], value[0]
-            if value[0] < 0 or value[1] > 1:
-                raise ValueError('Out of bound!')
-            lower = math.floor(maxB * value[0]) if value[0] >= 0.5 else math.ceil(maxB * value[0])
-            upper = math.floor(maxB * value[1]) if value[1] >= 0.5 else math.ceil(maxB * value[1])
-            lower, upper = min(lower, maxB - 1), max(1, upper)
-            while lower >= upper:
-                upper = lower + 1
-            return lower, upper
-        
-        else:
-            raise ValueError('Illegal mode.')
-
 class Config:
     def __init__(self, config: dict):
         self._config = config
-
-        self._noSit = config[NOSIT]
-        self._noSit = self._noSitGen()
-
         self._row = config[ROW]
         self._col = config[COL]
+        self._noSit = Parser.posArrayProvider(config[NOSIT], self._row, self._col)
         self._seed = None if config[SEED] == 0 else config[SEED]
         self._nameList = config[NAMELIST]
         self._modif = config[MODIF]
@@ -114,20 +114,6 @@ class Config:
                 break
         else:
             raise ValueError('Incomplete run. Try increasing maximum trial number or changing a seed.')
-    
-    def _noSitGen(self):
-        mode = self._noSit[MODE]
-        if mode == SIMPLE:
-            out = []
-            for each in self._noSit[CONFIG][VALUE]:
-                out.append(tuple(each))
-            return tuple(set(out))
-        elif mode == RULES:
-            return Parser.rules(self._noSit[CONFIG][RULES])
-        elif mode == EMPTY:
-            return tuple()
-        else:
-            raise ValueError('Illegal mode.')
     
     def _getSeatObject(self):
         self.seats = Seats(self._row, self._col, self._nameList, self._noSit, self._seed)
@@ -144,14 +130,15 @@ class Config:
         for each in modif:
             mode = each[MODE]
 
-            if mode == MATE:
+            if mode == PREF:
                 if PREF in each:
-                    pref = Parser.pref(each[PREF], self._row, self._col)
+                    pref = Parser.posArrayProvider(each[PREF], self._row, self._col)
                 else:
-                    pref = None, None
-                self.seats.setMate(each[NAME], each[MATE], *pref)
-            elif mode == PREF:
-                pref = Parser.pref(each[PREF], self._row, self._col)
-                self.seats.setPref(each[NAME], *pref)
-            elif mode == ROTATE: 
-                self.seats.setMate(*Parser.rotate(each))
+                    pref = Parser.posArrayProvider(Parser.allPreset, self._row, self._col)
+                
+                if MATE in each:
+                    self.seats.setMate(each[NAME], each[MATE], pref)
+                else:
+                    self.seats.setPref(each[NAME], pref)
+            elif mode == ROTATE:
+                self.seats.setMate(*Parser.rotate(each), Parser.posArrayProvider(Parser.allPreset, self._row, self._col))
