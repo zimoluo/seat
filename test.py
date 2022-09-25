@@ -1,6 +1,6 @@
 from src.files import FileExtension
 
-a = FileExtension('c5_test')
+a = FileExtension('c5')
 
 print(a.getStr())
 a.getTxt()
