@@ -6,8 +6,6 @@ from typing import Union
 class NoSolutionError(Exception): ...
 
 class Util:
-    def __init__(self): ...
-    
     @staticmethod
     def lineWordReplace(line: str, word: str, replace: str) -> str:
         for i in range(len(line) - len(word) + 1):

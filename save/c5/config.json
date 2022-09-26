@@ -234,14 +234,17 @@
             {
                 "col": {
                     "mode": "direct",
-                    "value": 0
+                    "value": [
+                        0,
+                        1
+                    ]
                 },
                 "mode": "add",
                 "row": {
                     "mode": "range",
                     "value": [
                         0,
-                        2
+                        1
                     ]
                 }
             },
@@ -268,5 +271,5 @@
         "mode": "rules"
     },
     "row": 4,
-    "seed": 0
+    "seed": 20220925
 }

@@ -243,14 +243,17 @@ All presets for generating a seat pattern is controlled by a `config.json` file.
             {
                 "col": {
                     "mode": "direct",
-                    "value": 0
+                    "value": [
+                        0,
+                        1
+                    ]
                 },
                 "mode": "add",
                 "row": {
                     "mode": "range",
                     "value": [
                         0,
-                        2
+                        1
                     ]
                 }
             },
@@ -277,7 +280,7 @@ All presets for generating a seat pattern is controlled by a `config.json` file.
         "mode": "rules"
     },
     "row": 4,
-    "seed": 0
+    "seed": 20220925
 }
 ```
 
