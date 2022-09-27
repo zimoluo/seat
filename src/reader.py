@@ -5,8 +5,10 @@ import time
 import random
 import math
 
+# A parser for reading formatted config files.
 class Parser:
 
+    # A pos-array reader.
     @staticmethod
     def posArrayProvider(data: dict, rowMax: int, colMax: int) -> tuple:
         mode = data[MODE]
