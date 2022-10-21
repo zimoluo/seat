@@ -127,7 +127,7 @@ class Config:
         for each in modif:
             mode = each[MODE]
             if mode == FIXED:
-                self.seats.setFixed(each[NAME], tuple(each[POS]))
+                self.seats.setFixed(each[NAME], *tuple(each[POS]))
 
         for each in modif:
             mode = each[MODE]

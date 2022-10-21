@@ -12,6 +12,14 @@
             "mate": "丁鹏元"
         },
         {
+            "mode": "fixed",
+            "name": "石清泓",
+            "pos": [
+                0,
+                1
+            ]
+        },
+        {
             "mate": "赖思轩",
             "mode": "pref",
             "name": "骆子墨",
@@ -128,24 +136,7 @@
         {
             "mode": "pref",
             "name": "龚搏扬",
-            "pref": {
-                "mode": "rules",
-                "rules": [
-                    {
-                        "col": {
-                            "mode": "all"
-                        },
-                        "mode": "add",
-                        "row": {
-                            "mode": "range",
-                            "value": [
-                                0,
-                                1
-                            ]
-                        }
-                    }
-                ]
-            }
+            "mate": "程启航"
         },
         {
             "mode": "pref",
@@ -232,7 +223,7 @@
     "noSit": {
         "rules": [
             {
-                "col": {
+                "row": {
                     "mode": "direct",
                     "value": [
                         0,
@@ -240,7 +231,7 @@
                     ]
                 },
                 "mode": "add",
-                "row": {
+                "col": {
                     "mode": "range",
                     "value": [
                         0,
