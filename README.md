@@ -8,279 +8,230 @@ All presets for generating a seat pattern is controlled by a `config.json` file.
 
 ```json
 {
-    "col": 11,
-    "modif": [
-        {
-            "mate": "边麓元",
-            "mode": "pref",
-            "name": "廖从云"
-        },
-        {
-            "mode": "pref",
-            "name": "王昊天",
-            "mate": "丁鹏元"
-        },
-        {
-            "mate": "赖思轩",
-            "mode": "pref",
-            "name": "骆子墨",
-            "pref": {
-                "mode": "rules",
-                "rules": [
-                    {
-                        "col": {
-                            "mode": "all"
-                        },
-                        "mode": "add",
-                        "row": {
-                            "mode": "scale",
-                            "value": [
-                                0.7,
-                                1
-                            ]
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "mate": "邱晨朔",
-            "mode": "pref",
-            "name": "范青桐"
-        },
-        {
-            "mode": "pref",
-            "name": "张宸瑞",
-            "pref": {
-                "mode": "rules",
-                "rules": [
-                    {
-                        "col": {
-                            "mode": "all"
-                        },
-                        "mode": "add",
-                        "row": {
-                            "mode": "scale",
-                            "value": [
-                                0,
-                                0.3
-                            ]
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "mode": "pref",
-            "name": "张扬",
-            "pref": {
-                "mode": "rules",
-                "rules": [
-                    {
-                        "col": {
-                            "mode": "all"
-                        },
-                        "mode": "add",
-                        "row": {
-                            "mode": "scale",
-                            "value": [
-                                0.7,
-                                1
-                            ]
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "mode": "rotate",
-            "names": [
-                "蔡朋骏",
-                "迟涵予",
-                "白宇轩"
-            ]
-        },
-        {
-            "mode": "rotate",
-            "names": [
-                "詹悦",
-                "黄婧涵",
-                "林彦含"
-            ]
-        },
-        {
-            "mode": "pref",
-            "name": "李星宸",
-            "pref": {
-                "mode": "rules",
-                "rules": [
-                    {
-                        "col": {
-                            "mode": "range",
-                            "value": [
-                                3,
-                                11
-                            ]
-                        },
-                        "mode": "add",
-                        "row": {
-                            "mode": "range",
-                            "value": [
-                                0,
-                                3
-                            ]
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "mode": "pref",
-            "name": "龚搏扬",
-            "pref": {
-                "mode": "rules",
-                "rules": [
-                    {
-                        "col": {
-                            "mode": "all"
-                        },
-                        "mode": "add",
-                        "row": {
-                            "mode": "range",
-                            "value": [
-                                0,
-                                1
-                            ]
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "mode": "pref",
-            "name": "曾韦翔",
-            "pref": {
-                "mode": "rules",
-                "rules": [
-                    {
-                        "col": {
-                            "mode": "range",
-                            "value": [
-                                5,
-                                11
-                            ]
-                        },
-                        "mode": "add",
-                        "row": {
-                            "mode": "range",
-                            "value": [
-                                1,
-                                3
-                            ]
-                        }
-                    }
-                ]
-            }
-        },
-        {
-            "mate": "杜心扬",
-            "mode": "pref",
-            "name": "章淏博",
-            "pref": {
-                "mode": "rules",
-                "rules": [
-                    {
-                        "col": {
-                            "mode": "all"
-                        },
-                        "row": {
-                            "mode": "scale",
-                            "value": [
-                                0.99,
-                                1
-                            ]
-                        },
-                        "mode": "add"
-                    }
-                ]
-            }
-        }
-    ],
-    "nameList": [
-        "龚搏扬",
-        "骆子墨",
-        "章淏博",
-        "边麓元",
-        "廖从云",
-        "林彦含",
-        "李星宸",
-        "曾韦翔",
-        "蔡朋骏",
-        "吴周毅",
-        "白宇轩",
-        "王昊天",
-        "赖思轩",
-        "郑俊永",
-        "杨熙宇",
-        "张宸瑞",
-        "詹悦",
-        "黄婧涵",
-        "陈元畅",
-        "程启航",
-        "丁鹏元",
-        "迟涵予",
-        "张扬",
-        "龙飞宇",
-        "邱晨朔",
-        "杜心扬",
-        "范青桐",
-        "卢逸",
-        "陈李石农",
-        "石清泓"
-    ],
-    "noSit": {
-        "rules": [
-            {
-                "col": {
-                    "mode": "direct",
-                    "value": [
-                        0,
-                        1
-                    ]
-                },
-                "mode": "add",
-                "row": {
-                    "mode": "range",
-                    "value": [
-                        0,
-                        1
-                    ]
-                }
-            },
-            {
-                "col": {
-                    "mode": "direct",
-                    "value": [
-                        2,
-                        5,
-                        8
-                    ]
-                },
-                "mode": "add",
-                "row": {
-                    "mode": "range",
-                    "value": [
-                        0,
-                        4,
-                        1
-                    ]
-                }
-            }
-        ],
-        "mode": "rules"
+  "col": 11,
+  "modif": [
+    {
+      "mate": "赵天宇",
+      "mode": "pref",
+      "name": "李欣怡"
     },
-    "row": 4,
-    "seed": 20220925
+    {
+      "mode": "pref",
+      "name": "王子涵",
+      "mate": "陈浩然"
+    },
+    {
+      "mate": "林雨辰",
+      "mode": "pref",
+      "name": "周嘉欣",
+      "pref": {
+        "mode": "rules",
+        "rules": [
+          {
+            "col": {
+              "mode": "all"
+            },
+            "mode": "add",
+            "row": {
+              "mode": "scale",
+              "value": [0.7, 1]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "mate": "吴梓轩",
+      "mode": "pref",
+      "name": "黄雅琳"
+    },
+    {
+      "mode": "pref",
+      "name": "刘云飞",
+      "pref": {
+        "mode": "rules",
+        "rules": [
+          {
+            "col": {
+              "mode": "all"
+            },
+            "mode": "add",
+            "row": {
+              "mode": "scale",
+              "value": [0, 0.3]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "mode": "pref",
+      "name": "张伟强",
+      "pref": {
+        "mode": "rules",
+        "rules": [
+          {
+            "col": {
+              "mode": "all"
+            },
+            "mode": "add",
+            "row": {
+              "mode": "scale",
+              "value": [0.7, 1]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "mode": "rotate",
+      "names": ["赖泽民", "刘星宇", "杨嘉诚"]
+    },
+    {
+      "mode": "rotate",
+      "names": ["陈欣怡", "黄彦妮", "林慧"]
+    },
+    {
+      "mode": "pref",
+      "name": "李志强",
+      "pref": {
+        "mode": "rules",
+        "rules": [
+          {
+            "col": {
+              "mode": "range",
+              "value": [3, 11]
+            },
+            "mode": "add",
+            "row": {
+              "mode": "range",
+              "value": [0, 3]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "mode": "pref",
+      "name": "钟海涛",
+      "pref": {
+        "mode": "rules",
+        "rules": [
+          {
+            "col": {
+              "mode": "all"
+            },
+            "mode": "add",
+            "row": {
+              "mode": "range",
+              "value": [0, 1]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "mode": "pref",
+      "name": "朱炜杰",
+      "pref": {
+        "mode": "rules",
+        "rules": [
+          {
+            "col": {
+              "mode": "range",
+              "value": [5, 11]
+            },
+            "mode": "add",
+            "row": {
+              "mode": "range",
+              "value": [1, 3]
+            }
+          }
+        ]
+      }
+    },
+    {
+      "mate": "许泽",
+      "mode": "pref",
+      "name": "李嘉豪",
+      "pref": {
+        "mode": "rules",
+        "rules": [
+          {
+            "col": {
+              "mode": "all"
+            },
+            "row": {
+              "mode": "scale",
+              "value": [0.99, 1]
+            },
+            "mode": "add"
+          }
+        ]
+      }
+    }
+  ],
+  "nameList": [
+    "钟海涛",
+    "周嘉欣",
+    "李嘉豪",
+    "赵天宇",
+    "李欣怡",
+    "林慧",
+    "李志强",
+    "朱炜杰",
+    "赖泽民",
+    "吴昊天",
+    "杨嘉诚",
+    "王子涵",
+    "林雨辰",
+    "张泽",
+    "陈炜",
+    "刘云飞",
+    "陈欣怡",
+    "黄彦妮",
+    "周涵",
+    "赵晨",
+    "陈浩然",
+    "刘星宇",
+    "张伟强",
+    "赵宇",
+    "吴梓轩",
+    "许泽",
+    "黄雅琳",
+    "陈静",
+    "李石",
+    "张泓"
+  ],
+  "noSit": {
+    "rules": [
+      {
+        "col": {
+          "mode": "direct",
+          "value": [0, 1]
+        },
+        "mode": "add",
+        "row": {
+          "mode": "range",
+          "value": [0, 1]
+        }
+      },
+      {
+        "col": {
+          "mode": "direct",
+          "value": [2, 5, 8]
+        },
+        "mode": "add",
+        "row": {
+          "mode": "range",
+          "value": [0, 4, 1]
+        }
+      }
+    ],
+    "mode": "rules"
+  },
+  "row": 4,
+  "seed": 20220925
 }
 ```
 
